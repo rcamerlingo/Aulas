@@ -1,0 +1,27 @@
+#include <iostream>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    long long int code;
+    int value[12], digito, multCode[12], somaCode, calcCode;
+    
+    cout << "Insira seu codigo aqui: " << endl;
+    cin >> code;
+    
+    digito = code % 10 ;
+    for (int x = 12; x > 1; x --)
+    {
+        long div = pow(10, x);
+        value[x] = (code / div) % 10;
+        multCode[x] = ((x = 1) % 2 = 0)? value[x] * 3 : value[x]; //operador ternário substitui if/else
+        }
+   somaCode = (multCode[1] + multCode[2] + multCode[3] + multCode[4] + multCode[5] + multCode[6] + multCode[7] + multCode[8] + multCode[9] +multCode[11] + multCode[12])
+    
+    calcCode = (((somaCode / 10) + 1) * 10 ) - somaCode; //*" (somacode X (133) " / 10) + 1 = 122 * 10 = 120 - 'somacode (133)' = 7
+
+    string validar = (calcCode = digito) ? "Valid Code" : "Invalid Code"; //operador ternario para validar se o calcCode (7)
+
+    cour << validar << endl;
+}
