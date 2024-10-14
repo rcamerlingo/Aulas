@@ -1,0 +1,132 @@
+#include <iostream>
+#include <cstdlib>  // Para system(), rand() e srand()
+#include <ctime>    // Para time()
+
+using namespace std;
+
+int main() {
+    int menu;
+
+    do {
+        system("cls");
+
+        // Exibe o menu principal
+        cout << "JOGO DA FORCA\n\n\n";
+        cout << "===== MENU =====\n\n";
+        cout << "Selecione uma opcao:\n";
+        cout << "[0] = Jogar\n[1] = Sobre\n[2] = Fim\n";
+
+        cin >> menu;
+        system("cls");
+
+        if (menu == 0) {
+            cout << "\nVoce escolheu Jogar!\n";
+
+            // Gera uma palavra aleatoriamente
+            srand(time(0));
+            int indice = rand() % 10;  // Escolhe uma palavra aleatoriamente entre 0 e 9
+
+            // Definir manualmente cada palavra
+            char p1_1 = 'J', p1_2 = 'U', p1_3 = 'L', p1_4 = 'G', p1_5 = 'A', p1_6 = 'R';
+            char p2_1 = 'E', p2_2 = 'S', p2_3 = 'C', p2_4 = 'O', p2_5 = 'L', p2_6 = 'A';
+            char p3_1 = 'L', p3_2 = 'I', p3_3 = 'V', p3_4 = 'R', p3_5 = 'O', p3_6 = 'S';
+            char p4_1 = 'P', p4_2 = 'R', p4_3 = 'A', p4_4 = 'T', p4_5 = 'O', p4_6 = 'S';
+            char p5_1 = 'F', p5_2 = 'L', p5_3 = 'O', p5_4 = 'R', p5_5 = 'A', p5_6 = 'L';
+            char p6_1 = 'C', p6_2 = 'A', p6_3 = 'M', p6_4 = 'I', p6_5 = 'S', p6_6 = 'A';
+            char p7_1 = 'F', p7_2 = 'O', p7_3 = 'R', p7_4 = 'J', p7_5 = 'A', p7_6 = 'R';
+            char p8_1 = 'C', p8_2 = 'O', p8_3 = 'P', p8_4 = 'I', p8_5 = 'A', p8_6 = 'S';
+            char p9_1 = 'S', p9_2 = 'E', p9_3 = 'G', p9_4 = 'U', p9_5 = 'I', p9_6 = 'R';
+            char p10_1 = 'S', p10_2 = 'A', p10_3 = 'L', p10_4 = 'A', p10_5 = 'D', p10_6 = 'A';
+
+            // Inicializa a palavra e progresso com underscores
+            char l1 = '_', l2 = '_', l3 = '_', l4 = '_', l5 = '_', l6 = '_';
+
+            // Inicializa a palavra correta com base no indice sorteado
+            if (indice == 0) { l1 = p1_1; l2 = p1_2; l3 = p1_3; l4 = p1_4; l5 = p1_5; l6 = p1_6; }
+            else if (indice == 1) { l1 = p2_1; l2 = p2_2; l3 = p2_3; l4 = p2_4; l5 = p2_5; l6 = p2_6; }
+            else if (indice == 2) { l1 = p3_1; l2 = p3_2; l3 = p3_3; l4 = p3_4; l5 = p3_5; l6 = p3_6; }
+            else if (indice == 3) { l1 = p4_1; l2 = p4_2; l3 = p4_3; l4 = p4_4; l5 = p4_5; l6 = p4_6; }
+            else if (indice == 4) { l1 = p5_1; l2 = p5_2; l3 = p5_3; l4 = p5_4; l5 = p5_5; l6 = p5_6; }
+            else if (indice == 5) { l1 = p6_1; l2 = p6_2; l3 = p6_3; l4 = p6_4; l5 = p6_5; l6 = p6_6; }
+            else if (indice == 6) { l1 = p7_1; l2 = p7_2; l3 = p7_3; l4 = p7_4; l5 = p7_5; l6 = p7_6; }
+            else if (indice == 7) { l1 = p8_1; l2 = p8_2; l3 = p8_3; l4 = p8_4; l5 = p8_5; l6 = p8_6; }
+            else if (indice == 8) { l1 = p9_1; l2 = p9_2; l3 = p9_3; l4 = p9_4; l5 = p9_5; l6 = p9_6; }
+            else { l1 = p10_1; l2 = p10_2; l3 = p10_3; l4 = p10_4; l5 = p10_5; l6 = p10_6; }
+
+            int tentativas = 10;
+            char p1 = '_', p2 = '_', p3 = '_', p4 = '_', p5 = '_', p6 = '_';
+            char letra;
+            bool ganhou = false;
+            int acertos = 0;
+
+            while (tentativas > 0 && acertos < 6) {
+                system("cls");
+                cout << "\nTentativas restantes: " << tentativas << endl;
+                cout << "Palavra: " << p1 << " " << p2 << " " << p3 << " " << p4 << " " << p5 << " " << p6 << endl;
+                cout << "Digite uma letra: ";
+                cin >> letra;
+                letra = toupper(letra);  // Converter para maiuscula
+
+                bool acerto = false;
+
+                // Verifica se a letra esta em alguma posicao da palavra
+                if (letra == l1 && p1 == '_') { p1 = l1; acerto = true; }
+                if (letra == l2 && p2 == '_') { p2 = l2; acerto = true; }
+                if (letra == l3 && p3 == '_') { p3 = l3; acerto = true; }
+                if (letra == l4 && p4 == '_') { p4 = l4; acerto = true; }
+                if (letra == l5 && p5 == '_') { p5 = l5; acerto = true; }
+                if (letra == l6 && p6 == '_') { p6 = l6; acerto = true; }
+
+                if (acerto) {
+                    cout << "Voce acertou!" << endl;
+                } else {
+                    cout << "Letra incorreta!" << endl;
+                    tentativas--;
+                }
+
+                acertos = 0;
+                if (p1 != '_') acertos++;
+                if (p2 != '_') acertos++;
+                if (p3 != '_') acertos++;
+                if (p4 != '_') acertos++;
+                if (p5 != '_') acertos++;
+                if (p6 != '_') acertos++;
+
+                if (acertos == 6) {
+                    ganhou = true;
+                    break;
+                }
+
+                system("pause");
+            }
+
+            system("cls");
+            if (ganhou) {
+                cout << "Parabens! Voce acertou a palavra: " << l1 << l2 << l3 << l4 << l5 << l6 << endl;
+            } else {
+                cout << "Voce perdeu! A palavra era: " << l1 << l2 << l3 << l4 << l5 << l6 << endl;
+            }
+            system("pause");
+
+        } else if (menu == 1) {
+            system("cls");
+            cout << "\n===== SOBRE =====" << endl;
+            cout << "Desenvolvido por: Rafael Camerlingo, Gabriel Sieracki Marques, Arthur Roberto Fischer, Claudio Antonio Correia " << endl;
+            cout << "Mes/Ano: Outubro/2024" << endl;
+            cout << "Disciplina: Algoritmos e Programacao - Prof. Rafael Martins" << endl;
+            cout << "Regras do jogo: Utilize apenas letras MAIUSCULAS (A-Z) nas tentativas." << endl;
+            system("pause");
+
+        } else if (menu == 2) {
+            system("cls");
+            cout << "Fim do programa. Obrigado por jogar!" << endl;
+            system("pause");
+        } else {
+            cout << "Valor fora da caixa! Tente novamente.\n";
+            system("pause");
+        }
+
+    } while (menu != 2);
+
+    return 0;
+}
