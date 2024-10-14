@@ -59,17 +59,44 @@ int main() {
             bool ganhou = false;
             int acertos = 0;
 
+            // Variáveis para armazenar letras erradas
+            char letraErrada1 = '\0';
+            char letraErrada2 = '\0';
+            char letraErrada3 = '\0';
+            char letraErrada4 = '\0';
+            char letraErrada5 = '\0';
+            char letraErrada6 = '\0';
+            char letraErrada7 = '\0';
+            char letraErrada8 = '\0';
+            char letraErrada9 = '\0';
+            char letraErrada10 = '\0';
+
             while (tentativas > 0 && acertos < 6) {
                 system("cls");
                 cout << "\nTentativas restantes: " << tentativas << endl;
                 cout << "Palavra: " << p1 << " " << p2 << " " << p3 << " " << p4 << " " << p5 << " " << p6 << endl;
+
+                // Exibe as letras erradas
+                cout << "Letras erradas: ";
+                if (letraErrada1 != '\0') cout << letraErrada1 << " ";
+                if (letraErrada2 != '\0') cout << letraErrada2 << " ";
+                if (letraErrada3 != '\0') cout << letraErrada3 << " ";
+                if (letraErrada4 != '\0') cout << letraErrada4 << " ";
+                if (letraErrada5 != '\0') cout << letraErrada5 << " ";
+                if (letraErrada6 != '\0') cout << letraErrada6 << " ";
+                if (letraErrada7 != '\0') cout << letraErrada7 << " ";
+                if (letraErrada8 != '\0') cout << letraErrada8 << " ";
+                if (letraErrada9 != '\0') cout << letraErrada9 << " ";
+                if (letraErrada10 != '\0') cout << letraErrada10 << " ";
+                cout << endl;
+
                 cout << "Digite uma letra: ";
                 cin >> letra;
-                letra = toupper(letra);  // Converter para maiuscula
+                letra = toupper(letra);  // Converter para maiúscula
 
                 bool acerto = false;
 
-                // Verifica se a letra esta em alguma posicao da palavra
+                // Verifica se a letra está em alguma posição da palavra
                 if (letra == l1 && p1 == '_') { p1 = l1; acerto = true; }
                 if (letra == l2 && p2 == '_') { p2 = l2; acerto = true; }
                 if (letra == l3 && p3 == '_') { p3 = l3; acerto = true; }
@@ -82,6 +109,18 @@ int main() {
                 } else {
                     cout << "Letra incorreta!" << endl;
                     tentativas--;
+
+                    // Armazena a letra errada em uma das variáveis
+                    if (letraErrada1 == '\0') letraErrada1 = letra;
+                    else if (letraErrada2 == '\0') letraErrada2 = letra;
+                    else if (letraErrada3 == '\0') letraErrada3 = letra;
+                    else if (letraErrada4 == '\0') letraErrada4 = letra;
+                    else if (letraErrada5 == '\0') letraErrada5 = letra;
+                    else if (letraErrada6 == '\0') letraErrada6 = letra;
+                    else if (letraErrada7 == '\0') letraErrada7 = letra;
+                    else if (letraErrada8 == '\0') letraErrada8 = letra;
+                    else if (letraErrada9 == '\0') letraErrada9 = letra;
+                    else if (letraErrada10 == '\0') letraErrada10 = letra;
                 }
 
                 acertos = 0;
